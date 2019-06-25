@@ -179,12 +179,14 @@
 
             this.render = () => {
                 this.renderId = undefined;
+                //console.log(this.renderId);
                 
                 for (const key in this.renderedStyles ) {
                     this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, 0.1);
                 }
                 
                 TweenMax.set(this.DOM.strip, {x: this.renderedStyles.position.previous});
+                
                 for (const item of this.items) {
                     TweenMax.set(item.DOM.el, {scale: this.renderedStyles.scale.previous, opacity: this.renderedStyles.opacity.previous});
                     TweenMax.set(item.DOM.image, {scale: this.renderedStyles.imgScale.previous});
